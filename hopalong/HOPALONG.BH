@@ -1,9 +1,13 @@
 
-CONST 	MENU1%=     0
+CONST 	MENU%=     0
+
+CONST	MNABOUT%=     8
+CONST	MNOPEN%=    17
+CONST	MNQUIT%=    19
+CONST	MNPORT%=    21
+
+CONST 	ABOUT%=     1
 
 
-CONST 	FORM2%=     1
-
-
-CONST 	FORM3%=     2
+CONST 	SETTINGS%=     2
 

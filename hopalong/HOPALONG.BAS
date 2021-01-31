@@ -38,7 +38,7 @@ DIM SHARED lines$(1,1)
 startprogram "e:\hbasic\hopalong.rsc",menu,mnquit          ' check path!
 
 InitTextWindows 1,1
-whandle=OpenTextWindow("Musical Hopalong",win_all-win_info)
+'whandle=OpenTextWindow("Musical Hopalong",win_all-win_info)
 
 hgtloop
 stopprogram
@@ -48,20 +48,24 @@ stopprogram
 ' Subroutines
 
 SUB processusermenus (VAL wind,VAL item,VAL title)
-    SHARED Finished_Flag,MyWindow,whandel,port%
+    SHARED Finished_Flag,MyWindow,whandle,port%
     STATIC dum,but,okb
     SELECT CASE item
       CASE mnabout
         selecttree about
         dum=handledialog(0)
+        'FullRedraw whandle
       CASE mnport
         selecttree settings
         okb=handledialog(0)
         but=getbutton(0)
         IF but=4 AND okb=2 THEN port%=1   ' radio button <serial> selected and <OK> pressed 
+        'FullRedraw whandle
       CASE mnopen
         IF port%=0 THEN port%=3           ' default to midi 
+        whandle=OpenTextWindow("Musical Hopalong",win_all-win_info)
         init
+        'FullRedraw whandle
     END SELECT
 END SUB
 
@@ -69,7 +73,7 @@ END SUB
 SUB init
     SHARED whandle,a!,b!,c!,s!,ao!,bo!,co!,so!,xo!,yo!,x_old!,y_old!,wx,wy,ww,wh,wm!,hm!,wwm!,whm!
     LOCAL dum
-    dum = wind_get(whandle,7,wx,wy,ww,wh)
+    dum = wind_get(whandle,7,wx,wy,ww,wh)   'get screen size
 ' init hopalong
     a! = 4000
     b! = 4000
