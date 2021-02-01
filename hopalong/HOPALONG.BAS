@@ -165,7 +165,7 @@ SUB gaugespeed
         delay! = 0
     ELSE
         ' otherwise we need a delay based on the speed of the machine we're on
-        delay! = (i!/3000)/3000
+        delay! = ((i!/3000)/3000)/(1/3000)
     END IF
 END SUB
 
